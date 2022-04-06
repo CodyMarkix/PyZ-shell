@@ -1,0 +1,21 @@
+                # if x == "for":
+                #     while True:
+                #         forloop = input("... ")
+                #         
+                #         if forloop == "":
+                #             print(inputcommand +" "+ forloop)
+                #             break
+                #         else:
+                #             continue
+                # 
+                # if x == "if":
+                #     while True:
+                #         ifstat = input("... ")
+                #         
+                #         if ifstat == "":
+                #             exec(inputcommand +" "+ ifstat)
+                #             break
+                #         else:
+                #             continue
+                # 
+                # else:

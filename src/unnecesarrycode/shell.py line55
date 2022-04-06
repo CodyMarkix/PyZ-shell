@@ -1,0 +1,11 @@
+        # except NameError as nameerr:
+        #     print(nameerr)
+        #     continue
+        # 
+        # except AttributeError as attrberr:
+        #     print(attrberr)
+        #     continue
+        # 
+        # except SyntaxError as synterr:
+        #     print(synterr)
+        #     continue
