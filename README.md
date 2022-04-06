@@ -1,16 +1,4 @@
-<style>
-    .container {
-    position: absolute;
-    left: 50%;
-    -moz-transform: translateX(-50%) translateY(-50%);
-    -webkit-transform: translateX(-50%) translateY(-50%);
-    transform: translateX(-50%) translateY(-50%);
-}
-</style>
-
-<br> <br> <br>
 <img class="container" src="icon/PyZlogo.png" width="150" height="150">
-<br> <br> <br>
 
 # PyZ - A custom shell for Python, written in Python
 
