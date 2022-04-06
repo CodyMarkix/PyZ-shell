@@ -56,7 +56,7 @@ cd PyZ-shell && ./make install
 ## Usage
 
 ### Running the shell
-- There's two to run the shell.
+- There's two ways to run the shell.
 
 1. Open up a terminal and run `pyz`.
 2. If you downloaded the AppImage and used something like AppImageLauncher to register it into your DE's menu, open that menu and click on "PyZ".
