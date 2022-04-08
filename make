@@ -83,7 +83,7 @@ package () {
     if [[ "$1" == "DEB" ]] || [[ "$1" == "deb" ]]; then
         build
         
-        cd ../.. || exit 1
+        cd ../ || exit 1
         mkdir -p "${versionstring}/DEBIAN" "${versionstring}/usr/local/bin"
         touch "${versionstring}/DEBIAN/control"
         echo "${debcontrol}" > ${versionstring}/DEBIAN/control
@@ -97,7 +97,6 @@ package () {
         rm -r "${versionstring}"
         mv "${versionstring}.deb" Linux/
         cd Linux/ || exit 1
-        rm -r build dist main.spec
     
     elif [[ "$1" == "AppImage" ]] || [[ "$1" == "Appimage" ]] || [[ "$1" == "appImage" ]] || [[ "$1" == "appimage" ]] || [[ "$1" == "APPIMAGE" ]]; then
         build
