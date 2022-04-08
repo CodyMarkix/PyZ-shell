@@ -6,8 +6,8 @@ import sys
 import platform # Basically only for returning the host's arch
 
 # Importing other files
-import shell as pyzshell
-import rccreator
+import shell.shell as pyzshell
+import shell.rccreator as rccreator
 
 homedir = os.path.expanduser('~')
 pyver = sys.version.split(" ")

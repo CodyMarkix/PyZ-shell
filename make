@@ -53,7 +53,7 @@ build () {
         mkdir -p bin/Linux
         cd bin/Linux || exit 2
         
-        pyinstaller --onefile ../../src/main.py ../../src/rccreator.py ../../src/shell.py
+        pyinstaller --onefile ../../src/main.py ../../src/shell/rccreator.py ../../src/shell/shell.py
         if [[ "$?" != "0" ]]; then
             printf "[ERROR] Error while building! Check logs above"
             exit 1
