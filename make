@@ -88,10 +88,10 @@ package () {
         touch "${versionstring}/DEBIAN/control"
         echo "${debcontrol}" > ${versionstring}/DEBIAN/control
         
-        cd Linux/dist || exit 1
-        cp "pyz" "../../${versionstring}/usr/local/bin/pyz"
-        
-        cd ../.. || exit 1
+        cd Linux/ || exit 1
+        cp "pyz" "../${versionstring}/usr/local/bin/pyz"
+         
+        cd ../ || exit 1
         dpkg-deb --build ${versionstring}
 
         rm -r "${versionstring}"
