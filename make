@@ -36,8 +36,12 @@ make package [DEB/AppImage]
 
 Commands:
 - build: Builds the program and nothing else
+- docs: Builds the man pages
 - install: Builds the program and installs it to ~./local/bin
-- installdeps: Installs necesarry dependencies
+- installdeps: Installs dependencies
+    - all: Installs all dependencies
+    - dev: Installs dependencies only required for development/compiling
+    - runtime: Installs dependencies only required for runtime
 - package: Builds the program and creates a package
 - help: Shows this help menu
 
@@ -144,10 +148,31 @@ checkdeps () {
     fi
 }
 
+docs () {
+    cd src/docs || exit 1
+    pandoc pyz.1.MD -s -t man -o pyz.1
+    pandoc pyz-plugm.1.MD -s -t man -o pyz-plugm.1
+
+    gzip pyz.1 && gzip pyz-plugm.1
+    sudo --prompt="Enter your password (for moving the man-pages to a write-protected location): " mv pyz.1.gz /usr/local/share/man/man1/pyz.1.gz
+    sudo mv pyz-plugm.1.gz /usr/local/share/man/man1/pyz-plugm.1.gz
+    sudo mandb
+}
+
 installdeps () {
-    sudo apt install python3-pip
-    pip install termcolor
-    pip install pyinstaller
+    if [[ "$1" == "all" ]]; then
+        sudo apt install python3-pip pandoc || sudo pacman -S python-pip pandoc || sudo dnf install python3-pip pandoc
+        pip install termcolor
+        pip install pyinstaller
+    
+    elif [[ "$1" == "dev" ]]; then
+        sudo apt install python3-pip pandoc || sudo pacman -S python-pip pandoc || sudo dnf install python3-pip pandoc
+        pip install pyinstaller
+    
+    elif [[ "$1" == "runtime" ]]; then
+        sudo apt install python3-pip || sudo pacman -S python-pip || sudo dnf install python3-pip
+        pip install termcolor
+    fi
 }
 
 main () {
@@ -157,11 +182,14 @@ main () {
     elif [[ "$1" == "build" ]]; then
         checkdeps
     
+    elif [[ "$1" == "docs" ]]; then
+        docs
+
     elif [[ "$1" == "install" ]]; then
         install
     
     elif [[ "$1" == "installdeps" ]]; then
-        installdeps
+        installdeps "$2"
 
     elif [[ "$1" == "package" ]]; then
         package "$2"

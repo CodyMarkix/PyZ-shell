@@ -18,6 +18,14 @@ def shell():
     for x in rcfile:
         exec(x)
 
+    # Import PyZ extensions
+    sys.path.append(os.path.join(os.environ['HOME'], ".local", "share", "pyz", "plugins"))
+    pluginlist = os.listdir(os.path.join(os.environ['HOME'], ".local", "share", "pyz", "plugins"))
+    for plugin in pluginlist:
+        if plugin != "repolist.conf":
+            print("Available plugins: "+ plugin)
+
+
     # The actual shell
     while True:
         try:
