@@ -1,4 +1,3 @@
-from doctest import REPORT_CDIFF
 import os
 import requests
 import sys
