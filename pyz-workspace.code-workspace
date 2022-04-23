@@ -1,0 +1,30 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../pyz-plugm-repo"
+		}
+	],
+	"launch": {
+		"version": "0.2.0",
+		"configurations": [
+			{
+				"name": "Python: Current File",
+				"type": "python",
+				"request": "launch",
+				"program": "${file}",
+				"console": "integratedTerminal",
+				"justMyCode": true,
+				
+			}
+		]
+	},
+	"settings": {
+		"editor.minimap.side": "right",
+		"editor.tokenColorCustomizations": {
+			"comments": "#427c3d"
+		}
+	}
+}
