@@ -1,5 +1,4 @@
 import os
-import sys
 
 import pluginmgr.mgrinit as mgrinit
 import pluginmgr.installer as installer
@@ -13,4 +12,3 @@ PLUGINFOLDER = os.path.join(os.environ['HOME'], ".local", "share", "pyz", "plugi
 def help():
     helptext = "PlugM - PyZ's plugin manager!\n\ninit - initializes PlugM - WARNING FOR FIRST-TIME USERS, YOU WANT TO RUN THIS BEFORE ANYTHING ELSE\nupdate - Updates available plugins\n"
     print(helptext)
-

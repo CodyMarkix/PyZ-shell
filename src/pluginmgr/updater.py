@@ -1,5 +1,6 @@
 import requests
 import codecs
+import sys
 import pluginmgr.manager as manager
 
 def update():

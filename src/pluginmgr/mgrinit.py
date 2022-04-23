@@ -19,7 +19,7 @@ def init():
     repolistpath = os.path.join(os.environ['HOME'], ".local", "share", "pyz", "plugins", "repolist.json")
 
     print("Writing to repolist.conf...")
-    repolistfile.write(repolistjson)
+    repolistfile.write(manager.repolistjson)
     repolistfile.close()
 
     print("Initialized! You can now start using PlugM.")
