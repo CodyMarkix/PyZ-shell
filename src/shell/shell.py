@@ -1,6 +1,12 @@
 import termcolor # Making the prompt pretty :D
 import os
 import sys
+import importlib.util
+
+# Importing importer.py
+spec = importlib.util.spec_from_file_location("importer", "pluginmgr/importer.py") # The fact that you have to do
+importer = importlib.util.module_from_spec(spec) #  all of this to import a python file
+spec.loader.exec_module(importer) # outside the current directory angers me 
 
 homedir = os.path.expanduser('~')
 rcfilepath = homedir +"/.pyzrc"
@@ -18,13 +24,8 @@ def shell():
     for x in rcfile:
         exec(x)
 
-    # Import PyZ extensions
-    sys.path.append(os.path.join(os.environ['HOME'], ".local", "share", "pyz", "plugins"))
-    pluginlist = os.listdir(os.path.join(os.environ['HOME'], ".local", "share", "pyz", "plugins"))
-    for plugin in pluginlist:
-        if plugin != "repolist.conf":
-            print("Available plugins: "+ plugin)
-
+    # Import PyZ extensions - not functional for now
+    # importer.importplugin()
 
     # The actual shell
     while True:

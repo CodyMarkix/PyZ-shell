@@ -22,13 +22,21 @@ def main():
             sys.exit(0)
         
         elif sys.argv[2] == "init":
-            plugmgr.init()
+            plugmgr.mgrinit.init()
             sys.exit(0)
 
         elif sys.argv[2] == "update":
-            plugmgr.update()
+            plugmgr.updater.update()
             sys.exit(0)
         
+        elif sys.argv[2] == "search":
+            plugmgr.searcher.search(sys.argv[3])
+            sys.exit(0)
+
+        elif sys.argv[2] == "install":
+            plugmgr.installer.install(sys.argv[3])
+            sys.exit(0)
+
         else:
             plugmgr.help()
             sys.exit(0)

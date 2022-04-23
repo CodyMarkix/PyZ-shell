@@ -1,10 +1,24 @@
 {
 	"folders": [
 		{
-			"path": "."
+			"path": ".",
+			"name": "PyZ Shell"
 		},
 		{
-			"path": "../pyz-plugm-repo"
+			"path": "../pyz-plugm-repo",
+			"name": "Main repo"
+		},
+		{
+			"path": "../pyz-repo-template",
+			"name": "Repo Template"
+		},
+		{
+			"path": "../../../.local/share/pyz/plugins",
+			"name": "Plugins (*nix)"
+		},
+		{
+			"path": "%USERPROFILE%/AppData/Roaming/PyZ/plugins",
+			"name": "Plugins (Windows)"
 		}
 	],
 	"launch": {
