@@ -92,6 +92,7 @@ Which produces:
 ## Currently known bugs
 
 - For / While loops, if statements, basically any multi-line code doesn't work well right now
+- Built binary doesn't work unless it's an AppImage
 
 ## To-do list
 
