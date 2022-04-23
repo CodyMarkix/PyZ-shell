@@ -22,7 +22,7 @@ PyZ is meant to be a custom shell for python. Contains a customizable shell, a .
 
 ## Platform support
 
-This being a Python script, it's able to work on basically anything that can run a python intrepreter. So
+This being a Python app, it's able to work on basically anything that can run a python intrepreter. So
 
 - Windows
 - MacOS
