@@ -11,6 +11,8 @@ PyZ is meant to be a custom shell for python. Contains a customizable shell, a .
 - [PyZ - A custom shell for Python, written in Python](#pyz---a-custom-shell-for-python-written-in-python)
   - [Platform support](#platform-support)
   - [Installation](#installation)
+    - [WARNING](#warning)
+    - [Working instructions](#working-instructions)
     - [Requirements](#requirements)
   - [Usage](#usage)
     - [Running the shell](#running-the-shell)
@@ -33,6 +35,10 @@ and probably many more.
 
 ## Installation
 
+### WARNING
+
+<h3> Building from source is currently broken right now. The only way to run this shell is to run it from source. Working instructions can be seen in Table of Contents </h3>
+
 - Clone the repository
 
 ```bash
@@ -45,6 +51,23 @@ git clone https://github.com/CodyMarkix/PyZ-Shell
 cd PyZ-shell && ./make install
 ```
 <sub> If you're on Windows, replace `./make install` with `.\make install`</sub>
+
+### Working instructions
+
+- Clone this repository and save it somewhere
+
+```bash
+git clone https://github.com/CodyMarkix/PyZ-Shell
+```
+
+- Then enter the cloned repository and run `python3 src/main.py`
+  
+```bash
+git clone https://github.com/CodyMarkix/PyZ-Shell
+```
+
+If you're on Windows, you may need to replace `python3` with just `python`
+
 
 ### Requirements
 
