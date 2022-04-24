@@ -61,15 +61,5 @@
 		"editor.tokenColorCustomizations": {
 			"comments": "#427c3d"
 		}
-	},
-	"tasks": {
-		"version": "2.0.0",
-		"tasks": [
-			{
-				"label": "echo",
-				"type": "shell",
-				"command": "echo Hello"
-			}
-		]
 	}
 }
