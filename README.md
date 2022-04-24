@@ -96,7 +96,7 @@ Which produces:
 
 ## To-do list
 
+- [x] Add plugin support
 - [ ] Complete make.ps1
 - [ ] Fix multi-line code bug
 - [ ] Add automatic checks for updates
-- [x] Add plugin support
