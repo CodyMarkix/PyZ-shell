@@ -4,6 +4,7 @@
 import os
 import sys
 import platform # Basically only for returning the host's arch
+
 # Importing other files
 import shell.shell as pyzshell
 import shell.rccreator as rccreator
@@ -41,13 +42,16 @@ def main():
             plugmgr.help()
             sys.exit(0)
 
-    if os.path.isfile(homedir+"/.pyzrc"):
-        print("PyZ - A custom shell in Python, for Python.\nPython ver: "+ pyver[0] +" ("+ platform.architecture()[0] +")")
-        pyzshell.shell()        
-    
+    elif sys.argv[1] == " ":
+        if os.path.isfile(homedir+"/.pyzrc"):
+            print("PyZ - A custom shell in Python, for Python.\nPython ver: "+ pyver[0] +" ("+ platform.architecture()[0] +")")
+            pyzshell.shell()        
+        
+        else:
+            rccreator.createrc()
+            pyzshell.shell()
     else:
-        rccreator.createrc()
-        pyzshell.shell()
+        print("Either enter a valid command or run the shell without any command!")
 
     return 0
 

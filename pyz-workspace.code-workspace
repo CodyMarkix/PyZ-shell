@@ -13,11 +13,15 @@
 			"name": "Repo Template"
 		},
 		{
+			/*
+			You might want to edit paths for Plugins (*nix) and Plugins (Windows), depending on where you placed the workspace file.
+			For some dumb-ass reason, VS Code workspaces only support paths relative to the workspace file. (Either that, or I can't set it up properly)
+			*/
 			"path": "../../../.local/share/pyz/plugins",
 			"name": "Plugins (*nix)"
 		},
 		{
-			"path": "%USERPROFILE%/AppData/Roaming/PyZ/plugins",
+			"path": "../../../AppData/Roaming/PyZ/plugins",
 			"name": "Plugins (Windows)"
 		}
 	],
@@ -32,6 +36,23 @@
 				"console": "integratedTerminal",
 				"justMyCode": true,
 				
+			},
+
+			{
+				"name": "PyZ - Shell",
+				"type": "python",
+				"request": "launch",
+				"program": "${fileWorkspaceFolder}/src/main.py",
+				"console": "externalTerminal",
+				"justMyCode": true,
+			},
+
+			{
+				"name": "PlugM - Install test",
+				"type": "python",
+				"request": "launch",
+				"program": "${fileWorkspaceFolder}/src/main.py",
+				"args": ["plugm", "install", "pyz-extension-doc"]		
 			}
 		]
 	},
@@ -40,5 +61,15 @@
 		"editor.tokenColorCustomizations": {
 			"comments": "#427c3d"
 		}
+	},
+	"tasks": {
+		"version": "2.0.0",
+		"tasks": [
+			{
+				"label": "echo",
+				"type": "shell",
+				"command": "echo Hello"
+			}
+		]
 	}
 }

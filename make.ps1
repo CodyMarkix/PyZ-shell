@@ -17,7 +17,7 @@ function help () {
 }
 
 function build () {
-    Write-Host "build"
+    if ( Get-Location -contains )
 }
 
 function install () {
