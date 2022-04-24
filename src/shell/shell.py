@@ -1,7 +1,7 @@
 import termcolor # Making the prompt pretty :D
 import os
 import sys
-import shell.pluginimport
+import shell.pluginimport as pluginimport
 
 homedir = os.path.expanduser('~')
 rcfilepath = homedir +"/.pyzrc"
@@ -19,8 +19,8 @@ def shell():
     for x in rcfile:
         exec(x)
 
-    # Import PyZ extensions - not functional for now
-    # importer.importplugin()
+    # Import PyZ extensions
+    pluginimport.importplugin()
 
     # The actual shell
     while True:

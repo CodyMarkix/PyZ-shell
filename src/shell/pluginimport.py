@@ -1,14 +1,20 @@
 #!/usr/bin/env python3
 import sys
 import os
-# import importlib.util
+import importlib
 
 def importplugin():
     sys.path.append(os.path.join(os.environ['HOME'], ".local", "share", "pyz", "plugins"))
     pluginlist = os.listdir(os.path.join(os.environ['HOME'], ".local", "share", "pyz", "plugins"))
+    installedplugs = len(pluginlist)-2
+    i = 0
+    
     for plugin in pluginlist:
-        print(plugin)
-
-        # spec = importlib.util.spec_from_file_location(plugin, plugin +"/__init__.py") # The fact that you have to do
-        #  = importlib.util.module_from_spec(spec) #  all of this to import a python file
-        # spec.loader.exec_module(importer) # outside the current directory angers me 
+        if plugin != "repolist.conf":
+            if i < installedplugs:
+                importlib.import_module(plugin +".__init__")
+                i += 1                
+            else:
+                pass
+        else:
+            continue

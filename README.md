@@ -99,4 +99,4 @@ Which produces:
 - [ ] Complete make.ps1
 - [ ] Fix multi-line code bug
 - [ ] Add automatic checks for updates
-- [ ] Add plugin support
+- [x] Add plugin support
