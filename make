@@ -18,7 +18,7 @@ Description: A shell, written in Python, for Python
 desktopfile="[Desktop Entry]
 Name=PyZ
 Exec=pyz
-Icon=PyZlogo.png
+Icon=PyZlogo
 Type=Application
 Terminal=true
 Categories=Utility
