@@ -4,6 +4,7 @@ import pluginmgr.manager as manager
 def init():
     print("Creating plugins folder...")
 
+    # Creates the pyz folder and plugins
     os.mkdir(os.path.join(os.environ['HOME'], ".local", "share", "pyz"))
     os.mkdir(os.path.join(os.environ['HOME'], ".local", "share", "pyz", "plugins"))
 
@@ -18,6 +19,8 @@ def init():
     repolistfile = open(manager.PLUGINFOLDER +"/repolist.conf", "a+")
     repolistpath = os.path.join(os.environ['HOME'], ".local", "share", "pyz", "plugins", "repolist.json")
 
+    # Appends the sample repolist.conf to the end-user's repolist.conf.
+    # This could be done in write-mode instead of append-mode, but whatever.
     print("Writing to repolist.conf...")
     repolistfile.write(manager.repolistjson)
     repolistfile.close()

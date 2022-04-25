@@ -17,6 +17,9 @@ pyver = sys.version.split(" ")
 def main():
     sys.argv.extend(" ")
 
+
+    # Long ass check for if the user wants to run PlugM,
+    # and if so, check what PlugM command the user is running.
     if sys.argv[1] == "plugm":
         if sys.argv[2] == "help":
             plugmgr.help()

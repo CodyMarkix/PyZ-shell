@@ -3,6 +3,7 @@ import os
 import sys
 import shell.pluginimport as pluginimport
 
+# Path for the pyzrc file
 homedir = os.path.expanduser('~')
 rcfilepath = homedir +"/.pyzrc"
 
@@ -39,16 +40,17 @@ def shell():
                         
                         if forcode != "":
                             forloop.append(forcode)
-                            forloop.append("; ")
                         
                         elif forcode == "":
-                            print(''.join(forloop))
-                            exec(''.join(forloop))
+                            codenovar = forloop.pop()
+                            testvar = '; '.join(forloop)
+                            exec(testvar)
                             break
                 elif inputcommand == "exit()":
                     sys.exit(0)
                 else:
-                    exec(inputcommand)
+                    break        
+            exec(inputcommand)
         
         # Ignoring KeyboardInterrupts (Ctrl+C)
         except kbdinterrupt:
