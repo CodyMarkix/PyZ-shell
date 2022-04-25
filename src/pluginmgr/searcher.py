@@ -1,5 +1,6 @@
 import sys
 import json
+import termcolor
 import pluginmgr.manager as manager
 
 def search(term):
@@ -10,7 +11,7 @@ def search(term):
 
             for x in parsedmanifest["plugins"]:
                 if term in x["name"]:
-                    print(x["name"]+"\nVersion: "+x["version"]+"\nDescription: "+x["description"])
+                    print("["+termcolor.colored(x["name"], 'green')+"]"+"\nVersion: "+x["version"]+"\nDescription: "+x["description"])
         else:
             raise ValueError
 

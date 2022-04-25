@@ -120,6 +120,7 @@ Which produces:
 ## To-do list
 
 - [x] Add plugin support
-- [ ] Complete make.ps1
 - [ ] Fix multi-line code bug
+- [ ] Fix building from source
 - [ ] Add automatic checks for updates
+- [ ] Complete make.ps1
