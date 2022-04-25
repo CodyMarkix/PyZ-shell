@@ -38,6 +38,10 @@ def main():
             plugmgr.installer.install(sys.argv[3])
             sys.exit(0)
 
+        elif sys.argv[2] == "remove":
+            plugmgr.remover.remove(sys.argv[3])
+            sys.exit(0)
+
         else:
             plugmgr.help()
             sys.exit(0)

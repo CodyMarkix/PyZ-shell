@@ -18,7 +18,7 @@ def getRepo():
 def install(package):
     try:
         if package != " ":                            
-            validrepobrokey = getRepo() # Contains an \n character at the end, that's doo doo
+            validrepobrokey = getRepo() # Contains a 0A byte (\n) at the end, that's doo doo
             validrepo = validrepobrokey[:-1] # and we need to remove it
             
             with open(manager.PLUGINFOLDER+"/MANIFEST/mainrepo.json") as manifestfile:

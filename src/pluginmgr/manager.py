@@ -4,7 +4,7 @@ import pluginmgr.mgrinit as mgrinit
 import pluginmgr.installer as installer
 import pluginmgr.searcher as searcher
 import pluginmgr.updater as updater
-import pluginmgr.repomgr as repomgr
+import pluginmgr.remover as remover
 
 repolistjson = "# List of repos for PyZ plugins.\nSee man pyz-plugins.\n\n# Main repository\nhttps://github.com/CodyMarkix/PyZ-plugm-repo"
 PLUGINFOLDER = os.path.join(os.environ['HOME'], ".local", "share", "pyz", "plugins")
