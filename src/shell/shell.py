@@ -1,6 +1,5 @@
 import termcolor # Making the prompt pretty :D
 import os
-import sys
 import shell.pluginimport as pluginimport
 
 # Path for the pyzrc file

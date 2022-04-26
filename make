@@ -4,9 +4,9 @@
 # This is not a real make file, but rather
 # a build/install script written in bash
 
-versionstring="pyz_0.9_amd64"
+versionstring="pyz_0.9.5_amd64"
 debcontrol="Package: pyz
-Version: 0.9
+Version: 0.9.5
 Architecture: amd64
 Essential: no
 Priority: optional
@@ -57,7 +57,20 @@ build () {
         mkdir -p bin/Linux
         cd bin/Linux || exit 2
         
-        pyinstaller --onefile ../../src/main.py ../../src/shell/rccreator.py ../../src/shell/shell.py ../../src/pluginmgr/manager.py
+        pythonfiles=(
+            ../../main.py
+            ../../shell/pluginimport.py
+            ../../shell/rccreator.py
+            ../../shell/shell.py
+            ../../pluginmgr/installer.py
+            ../../pluginmgr/manager.py
+            ../../pluginmgr/mgrinit.py
+            ../../pluginmgr/remover.py
+            ../../pluginmgr/searcher.py
+            ../../pluginmgr/updater.py
+        )
+
+        pyinstaller --onefile "${pythonfiles[@]}"
         if [[ "$?" != "0" ]]; then
             printf "[ERROR] Error while building! Check logs above"
             exit 1
