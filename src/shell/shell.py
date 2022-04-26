@@ -13,6 +13,36 @@ prompt = "fallback prompt >" # Fallback prompt, in case there is no prompt in th
 eoferr = EOFError
 kbdinterrupt = KeyboardInterrupt
 
+def forLoop():
+    forloop2 = []
+
+    while True:
+        forcode = input("... ")
+        
+        if forcode != "":
+            forloop2.append(forcode)
+        
+        elif forcode == "":
+            # codenovar = forloop.pop()
+            # testvar = '; '.join(forloop)
+            exec(inputcommand + " " + "; ".join(forloop2))
+            return
+
+def whileLoop():
+    whileloop2 = []
+
+    while True:
+        whilecode = input("... ")
+        
+        if whilecode != "":
+            whileloop2.append(whilecode)
+        
+        elif whilecode == "":
+            # codenovar = forloop.pop()
+            # testvar = '; '.join(forloop)
+            exec(inputcommand + " " + "; ".join(whileloop2))
+            return
+
 # The function for running the shell
 def shell():
     # Execute the .pyzrc file
@@ -26,32 +56,17 @@ def shell():
     # The actual shell
     while True:
         try:
+            global inputcommand
             inputcommand = input(prompt +" ")
 
             # Handling multiple-line things like loops and if statements
-            for x in inputcommand.split():
-                if x == "for":
-                    forloop = []
-                    forloop.append(inputcommand)
-                    forloop.append(" ")
+            if inputcommand.split(" ")[0] == "for":
+                forLoop()
+            elif inputcommand.split(" ")[0] == "while":
+                whileLoop()
+            else:
+                exec(inputcommand)
 
-                    while True:
-                        forcode = input("... ")
-                        
-                        if forcode != "":
-                            forloop.append(forcode)
-                        
-                        elif forcode == "":
-                            codenovar = forloop.pop()
-                            testvar = '; '.join(forloop)
-                            exec(testvar)
-                            break
-                elif inputcommand == "exit()":
-                    sys.exit(0)
-                else:
-                    break        
-            exec(inputcommand)
-        
         # Ignoring KeyboardInterrupts (Ctrl+C)
         except kbdinterrupt:
             print("KeyboardInterrupt")
