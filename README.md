@@ -114,7 +114,7 @@ Which produces:
 
 ## Currently known bugs
 
-- Built binary doesn't work unless it's an AppImage
+- Built binary doesn't work ~~unless it's an AppImage~~ at all, a potential fix is in the works as of commiting this
 
 ## To-do list
 
