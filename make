@@ -68,6 +68,8 @@ build () {
             ../../src/pluginmgr/remover.py
             ../../src/pluginmgr/searcher.py
             ../../src/pluginmgr/updater.py
+            ../../src/updatemgr/checker.py
+            ../../src/updatemgr/verJSONcreate.py
         )
 
         pyinstaller --onefile "${pythonfiles[@]}"

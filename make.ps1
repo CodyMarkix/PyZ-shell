@@ -30,7 +30,7 @@ function build () {
     Remove-Item -Confirm build
     Remove-Item dist
     Remove-Item main.spec
-
+}
 function install () {
     build
 
