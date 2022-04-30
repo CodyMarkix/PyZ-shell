@@ -1,15 +1,13 @@
 import os
 
-# Kind of like __init__.py, except... not really??
-import pluginmgr.mgrinit as mgrinit
-import pluginmgr.installer as installer
-import pluginmgr.searcher as searcher
-import pluginmgr.updater as updater
-import pluginmgr.remover as remover
-
 # Sample repolist.json and plugin folder path
 repolistjson = "# List of repos for PyZ plugins.\nSee man pyz-plugins.\n\n# Main repository\nhttps://github.com/CodyMarkix/PyZ-plugm-repo"
-PLUGINFOLDER = os.path.join(os.environ['HOME'], ".local", "share", "pyz", "plugins")
+if os.name in "NT":
+    HOMEFOLDER = os.environ['USERPROFILE']
+    PLUGINFOLDER = os.path.join(HOMEFOLDER, 'AppData', 'Roaming', 'PyZ', 'plugins')
+else:
+    HOMEFOLDER = os.environ['HOME']
+    PLUGINFOLDER = os.path.join(HOMEFOLDER, ".local", "share", "pyz", "plugins")
 
 def help():
     helptext = "PlugM - PyZ's plugin manager!\n\ninit - initializes PlugM - WARNING FOR FIRST-TIME USERS, YOU WANT TO RUN THIS BEFORE ANYTHING ELSE\nupdate - Updates available plugins\n"

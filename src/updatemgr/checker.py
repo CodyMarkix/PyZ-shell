@@ -1,9 +1,10 @@
 import os
 import requests
 import json
+import pluginmgr.manager as manager
 
 def checkForUpdates():
-    with open(os.environ['HOME'] +"/.local/share/pyz/version.json", "r+") as versionjson:
+    with open(manager.HOMEFOLDER +"/.local/share/pyz/version.json", "r+") as versionjson:
         with open('/tmp/remotejson.json', 'x') as remotejsoncr:
             remotejsoncr.close()
 

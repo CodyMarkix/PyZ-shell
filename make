@@ -59,15 +59,18 @@ build () {
         
         pythonfiles=(
             ../../src/main.py
+            ../../src/shell/__init__.py
             ../../src/shell/shell.py
             ../../src/shell/rccreator.py
-            ../../src/pluginmgr/manager.py
             ../../src/shell/pluginimport.py
+            ../../src/pluginmgr/__init__.py
+            ../../src/pluginmgr/manager.py
             ../../src/pluginmgr/installer.py
             ../../src/pluginmgr/mgrinit.py
             ../../src/pluginmgr/remover.py
             ../../src/pluginmgr/searcher.py
             ../../src/pluginmgr/updater.py
+            ../../src/updatemgr/__init__.py
             ../../src/updatemgr/checker.py
             ../../src/updatemgr/verJSONcreate.py
         )

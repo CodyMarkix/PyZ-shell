@@ -2,10 +2,11 @@
 import sys
 import os
 import importlib
+import pluginmgr.manager as manager
 
 def importplugin():
-    sys.path.append(os.path.join(os.environ['HOME'], ".local", "share", "pyz", "plugins"))
-    pluginlist = os.listdir(os.path.join(os.environ['HOME'], ".local", "share", "pyz", "plugins"))
+    sys.path.append(os.path.join(manager.HOMEFOLDER, ".local", "share", "pyz", "plugins"))
+    pluginlist = os.listdir(os.path.join(manager.HOMEFOLDER, ".local", "share", "pyz", "plugins"))
     installedplugs = len(pluginlist)-2
     i = 0
     

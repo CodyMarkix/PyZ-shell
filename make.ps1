@@ -20,7 +20,7 @@ function build () {
     mkdir -p bin\Windows
     Set-Location bin\Windows
 
-    C:\Users\WinVM\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.8_qbz5n2kfra8p0\LocalCache\local-packages\Python38\Scripts\pyinstaller.exe --onefile ..\..\src\main.py ..\..\src\shell\shell.py ..\..\src\shell\rccreator.py ..\..\src\pluginmgr\manager.py ..\..\src\shell\pluginimport.py ..\..\src\pluginmgr\installer.py ..\..\src\pluginmgr\mgrinit.py ..\..\src\pluginmgr\remover.py ..\..\src\pluginmgr\searcher.py ..\..\src\pluginmgr\updater.py
+    pyinstaller --onefile ..\..\src\main.py ..\..\src\shell\shell.py ..\..\src\shell\rccreator.py ..\..\src\pluginmgr\manager.py ..\..\src\shell\pluginimport.py ..\..\src\pluginmgr\installer.py ..\..\src\pluginmgr\mgrinit.py ..\..\src\pluginmgr\remover.py ..\..\src\pluginmgr\searcher.py ..\..\src\pluginmgr\updater.py
 
     Set-Location -Path dist
     Rename-Item -Path main.exe pyz.exe
@@ -34,15 +34,17 @@ function build () {
 function install () {
     build
 
-    New-Item -Path "C:\Program Files" -Name "PyZ" -ItemType "directory"
-    Move-Item -Path .\pyz.exe -Destination "C:\Program Files\PyZ\pyz.exe"
+    New-Item -Path "$Env:USERPROFILE\AppData\Roaming" -Name "PyZ" -ItemType "directory"
+    Move-Item -Path .\pyz.exe -Destination "$ENV:USERPROFILE\AppData\Roaming\PyZ\pyz.exe"
+
+    $Env:PATH += ";$Env:USERPROFILE\AppData\Roaming\PyZ"
 }
 
-if ($1 = "help") {
+if ($args[0] -eq "help") {
     help
-} elseif ($1 = "build") {
+} elseif ($args[0] -eq "build") {
     build
-} elseif ($1 = "install") {
+} elseif ($args[0] -eq "install") {
     install
 } else {
     help
