@@ -53,7 +53,7 @@ def main():
         updatemgr.checker.checkForUpdates()
         
         if os.path.isfile(homedir+"/.pyzrc"):
-            if os.path.isfile(pluginmgr.manager.PLUGINFOLDER +"/version.json"):
+            if os.path.isfile(updatemgr.VERSIONFILE):
                 print("PyZ - A custom shell in Python, for Python.\nPython ver: "+ pyver[0] +" ("+ platform.architecture()[0] +")")
                 shell.pyzshell.shell()        
             else:

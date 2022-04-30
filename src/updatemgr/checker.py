@@ -2,22 +2,28 @@ import os
 import requests
 import json
 import pluginmgr.manager as manager
+import updatemgr
+
+if os.name in "nt":
+    tmplocation = os.path.join(os.environ['temp'], "remotejson.json")
+else:
+    tmplocation = os.path.join('/', 'tmp', 'remotejson.json')
 
 def checkForUpdates():
-    with open(manager.HOMEFOLDER +"/.local/share/pyz/version.json", "r+") as versionjson:
-        with open('/tmp/remotejson.json', 'x') as remotejsoncr:
+    with open(updatemgr.VERSIONFILE, "r+") as versionjson:
+        with open(tmplocation, 'x') as remotejsoncr:
             remotejsoncr.close()
 
-        with open('/tmp/remotejson.json', 'wb') as remotejson:
+        with open(tmplocation, 'wb') as remotejson:
             remotejsonrq = requests.get("https://raw.githubusercontent.com/CodyMarkix/PyZ-shell/master/version.json")
             remotejson.write(remotejsonrq.content)
         
         localjson = json.loads(versionjson.read())
-        remotejson = json.loads(open('/tmp/remotejson.json', 'r').read())
+        remotejson = json.loads(open(tmplocation, 'r').read())
 
         if localjson == remotejson:
-            os.remove('/tmp/remotejson.json')
+            os.remove(tmplocation)
             return
         else:
             print(f'You have new updates available! Check the GitHub repo/your package manager.\n')
-            os.remove('/tmp/remotejson.json')
+            os.remove(tmplocation)
