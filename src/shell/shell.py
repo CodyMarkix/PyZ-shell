@@ -24,6 +24,7 @@ def forLoop():
         elif forcode == "":
             # codenovar = forloop.pop()
             # testvar = '; '.join(forloop)
+            samplevar = inputcommand + " " + "; ".join(forloop2)
             exec(inputcommand + " " + "; ".join(forloop2))
             return
 

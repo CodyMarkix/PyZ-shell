@@ -58,16 +58,16 @@ build () {
         cd bin/Linux || exit 2
         
         pythonfiles=(
-            ../../main.py
-            ../../shell/pluginimport.py
-            ../../shell/rccreator.py
-            ../../shell/shell.py
-            ../../pluginmgr/installer.py
-            ../../pluginmgr/manager.py
-            ../../pluginmgr/mgrinit.py
-            ../../pluginmgr/remover.py
-            ../../pluginmgr/searcher.py
-            ../../pluginmgr/updater.py
+            ../../src/main.py
+            ../../src/shell/shell.py
+            ../../src/shell/rccreator.py
+            ../../src/pluginmgr/manager.py
+            ../../src/shell/pluginimport.py
+            ../../src/pluginmgr/installer.py
+            ../../src/pluginmgr/mgrinit.py
+            ../../src/pluginmgr/remover.py
+            ../../src/pluginmgr/searcher.py
+            ../../src/pluginmgr/updater.py
         )
 
         pyinstaller --onefile "${pythonfiles[@]}"

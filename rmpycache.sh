@@ -5,6 +5,7 @@ if [[ "$(pwd)" == *"pyz-shell"* ]]; then
         src/__pycache__
         src/pluginmgr/__pycache__
         src/shell/__pycache__
+        src/updatemgr/__pycache__
     )
     rm -r ${pycachedirs[*]}
 else

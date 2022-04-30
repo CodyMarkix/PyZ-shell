@@ -17,11 +17,25 @@ function help () {
 }
 
 function build () {
-    if ( Get-Location -contains )
-}
+    mkdir -p bin\Windows
+    Set-Location bin\Windows
+
+    C:\Users\WinVM\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.8_qbz5n2kfra8p0\LocalCache\local-packages\Python38\Scripts\pyinstaller.exe --onefile ..\..\src\main.py ..\..\src\shell\shell.py ..\..\src\shell\rccreator.py ..\..\src\pluginmgr\manager.py ..\..\src\shell\pluginimport.py ..\..\src\pluginmgr\installer.py ..\..\src\pluginmgr\mgrinit.py ..\..\src\pluginmgr\remover.py ..\..\src\pluginmgr\searcher.py ..\..\src\pluginmgr\updater.py
+
+    Set-Location -Path dist
+    Rename-Item -Path main.exe pyz.exe
+    Move-Item -Path .\pyz.exe -Destination ..\pyz.exe
+
+    Set-Location -Path ..
+    Remove-Item -Confirm build
+    Remove-Item dist
+    Remove-Item main.spec
 
 function install () {
-    Write-Host "install"
+    build
+
+    New-Item -Path "C:\Program Files" -Name "PyZ" -ItemType "directory"
+    Move-Item -Path .\pyz.exe -Destination "C:\Program Files\PyZ\pyz.exe"
 }
 
 if ($1 = "help") {

@@ -120,6 +120,6 @@ Which produces:
 
 - [x] Add plugin support
 - [x] Fix multi-line code bug
+- [x] Add automatic checks for updates
 - [ ] Fix building from source
-- [ ] Add automatic checks for updates
 - [ ] Complete make.ps1

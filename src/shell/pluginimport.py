@@ -9,8 +9,7 @@ def importplugin():
     installedplugs = len(pluginlist)-2
     i = 0
     
-    # This is probably garbage code but I don't want to break my program
-    # any further than it already is.
+    # This is probably garbage code but I don't want to break my program any further.
     for plugin in pluginlist:
         if plugin != "repolist.conf" and plugin != "MANIFEST":
             if i < installedplugs:

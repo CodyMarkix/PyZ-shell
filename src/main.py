@@ -9,6 +9,8 @@ import platform # Basically only for returning the host's arch
 import shell.shell as pyzshell
 import shell.rccreator as rccreator
 import pluginmgr.manager as plugmgr
+import updatemgr.checker as checker
+import updatemgr.verJSONcreate as verJSONcreate
 
 homedir = os.path.expanduser('~')
 pyver = sys.version.split(" ")
@@ -50,10 +52,17 @@ def main():
             sys.exit(0)
 
     elif sys.argv[1] == " ":
-        if os.path.isfile(homedir+"/.pyzrc"):
-            print("PyZ - A custom shell in Python, for Python.\nPython ver: "+ pyver[0] +" ("+ platform.architecture()[0] +")")
-            pyzshell.shell()        
+        checker.checkForUpdates()
         
+        if os.path.isfile(homedir+"/.pyzrc"):
+            if os.path.isfile(plugmgr.PLUGINFOLDER +"/version.json"):
+                print("PyZ - A custom shell in Python, for Python.\nPython ver: "+ pyver[0] +" ("+ platform.architecture()[0] +")")
+                pyzshell.shell()        
+            else:
+                verJSONcreate.createVersionJSON()
+                print("PyZ - A custom shell in Python, for Python.\nPython ver: "+ pyver[0] +" ("+ platform.architecture()[0] +")")
+                pyzshell.shell() 
+
         else:
             rccreator.createrc()
             pyzshell.shell()
