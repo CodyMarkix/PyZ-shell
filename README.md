@@ -91,7 +91,7 @@ Which produces:
 
 ## Currently known bugs
 
-PlugM is broken all of a sudden
+No currently known bugs!
 
 <sub>(Not counting make.ps1 not being finished)</sub>
 
