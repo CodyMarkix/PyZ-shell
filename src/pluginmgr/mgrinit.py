@@ -5,19 +5,23 @@ def init():
     print("Creating plugins folder...")
 
     # Creates the pyz folder and plugins
-    os.mkdir(os.path.join(manager.HOMEFOLDER, ".local", "share", "pyz"))
-    os.mkdir(os.path.join(manager.HOMEFOLDER, ".local", "share", "pyz", "plugins"))
+    # os.mkdir(os.path.join(manager.HOMEFOLDER, ".local", "share", "pyz"))
+    os.mkdir(manager.PLUGINFOLDER)
+    os.mkdir(os.path.join(manager.PLUGINFOLDER, 'MANIFEST'))
 
     print("Creating repolist.json...")
-    rplistfile = open(manager.PLUGINFOLDER +"/repolist.conf", 'x')
+    rplistfile = open(os.path.join(manager.PLUGINFOLDER, "repolist.conf"), 'x')
     rplistfile.close()
 
     print("Creating local manifest.json...")
-    localmanifest = open(manager.PLUGINFOLDER +"/MANIFEST/mainrepo.json", 'x')
+    localmanifest = open(os.path.join(manager.PLUGINFOLDER, "MANIFEST", "mainrepo.json"), 'x')
     localmanifest.close()
 
-    repolistfile = open(manager.PLUGINFOLDER +"/repolist.conf", "a+")
-    repolistpath = os.path.join(manager.HOMEFOLDER, ".local", "share", "pyz", "plugins", "repolist.json")
+    repolistfile = open(os.path.join(manager.PLUGINFOLDER, "repolist.conf"), "a+")
+    if os.name in "nt":
+        repolistpath = os.path.join(manager.HOMEFOLDER, "AppData", "PyZ", "plugins", "repolist.json")        
+    else:
+        repolistpath = os.path.join(manager.HOMEFOLDER, ".local", "share", "pyz", "plugins", "repolist.json")
 
     # Appends the sample repolist.conf to the end-user's repolist.conf.
     # This could be done in write-mode instead of append-mode, but whatever.

@@ -52,7 +52,7 @@ def main():
     elif sys.argv[1] == " ":
         updatemgr.checker.checkForUpdates()
         
-        if os.path.isfile(homedir+"/.pyzrc"):
+        if os.path.isfile(os.path.join(homedir, ".pyzrc")):
             if os.path.isfile(updatemgr.VERSIONFILE):
                 print("PyZ - A custom shell in Python, for Python.\nPython ver: "+ pyver[0] +" ("+ platform.architecture()[0] +")")
                 shell.pyzshell.shell()        

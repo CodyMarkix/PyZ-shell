@@ -1,6 +1,7 @@
 import termcolor # Making the prompt pretty :D
 import os
 import shell.pluginimport as pluginimport
+import subprocess
 
 # Path for the pyzrc file
 homedir = os.path.expanduser('~')
@@ -38,17 +39,31 @@ def whileLoop():
             whileloop2.append(whilecode)
         
         elif whilecode == "":
-            # codenovar = forloop.pop()
-            # testvar = '; '.join(forloop)
             exec(inputcommand + " " + "; ".join(whileloop2))
+            return
+
+def ifStatement():
+    ifcode2 = []
+
+    while True:
+        ifcode = input("... ")
+        
+        if ifcode != "":
+            ifcode2.append(ifcode)
+        
+        elif ifcode == "":
+            exec(inputcommand + " " + "; ".join(ifcode2))
             return
 
 # The function for running the shell
 def shell():
+    subprocess.call('', shell=True) # This is to make sure, the prompt isn't r/software gore material
+
     # Execute the .pyzrc file
-    rcfile = open(rcfilepath, "r")
-    for x in rcfile:
-        exec(x)
+    if os.path.isfile(os.path.join(homedir, '.pyzrc')):
+        rcfile = open(rcfilepath, "r")
+        for x in rcfile:
+            exec(x)
 
     # Import PyZ extensions
     pluginimport.importplugin()
@@ -64,6 +79,8 @@ def shell():
                 forLoop()
             elif inputcommand.split(" ")[0] == "while":
                 whileLoop()
+            elif inputcommand.split(" ")[0] == "if":
+                ifStatement()
             else:
                 exec(inputcommand)
 
