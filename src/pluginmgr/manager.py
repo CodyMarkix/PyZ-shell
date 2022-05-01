@@ -1,7 +1,7 @@
 import os
 
 # Sample repolist.json and plugin folder path
-repolistjson = "# List of repos for PyZ plugins.\nSee man pyz-plugins.\n\n# Main repository\nhttps://github.com/CodyMarkix/PyZ-plugm-repo"
+repolistjson = "# List of repos for PyZ plugins.\n#See man pyz-plugins.\n\n# Main repository\nhttps://github.com/CodyMarkix/PyZ-plugin-repo"
 if os.name in "nt":
     HOMEFOLDER = os.environ['USERPROFILE']
     PLUGINFOLDER = os.path.join(HOMEFOLDER, 'AppData', 'Roaming', 'PyZ', 'plugins')

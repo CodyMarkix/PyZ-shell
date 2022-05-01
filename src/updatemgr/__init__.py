@@ -1,6 +1,6 @@
 import os
 import updatemgr.checker as checker
-import updatemgr.verJSONcreate as verJSONcreate
+import pyziniter.verJSONcreate as verJSONcreate
 
 if os.name in "nt":
     VERSIONFILE = os.path.join(os.environ['USERPROFILE'], 'AppData', 'Roaming', 'PyZ', 'version.json')

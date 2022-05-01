@@ -2,13 +2,15 @@ import json
 import os
 import pluginmgr.manager as manager
 import updatemgr
+import pyziniter
 
 def createVersionJSON():
     samplejsonnp = {
         "version": "0.9.5"
     }
 
-    jsoncreating = open(os.environ['HOME']+ "/.local/share/pyz/version.json", "x")
+    print("A")
+    jsoncreating = open(updatemgr.VERSIONFILE, "x")
     jsoncreating.close()
 
     with open(updatemgr.VERSIONFILE, "w+") as versionjson:

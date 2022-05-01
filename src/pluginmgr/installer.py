@@ -18,7 +18,7 @@ def getRepo():
 
 def install(package):
     try:
-        if package != " ":                            
+        if package != " ":                      
             validrepobrokey = getRepo() # Contains a 0A byte (\n) at the end, that's doo doo
             validrepo = validrepobrokey[:-1] # and we need to remove it
             
@@ -52,7 +52,6 @@ def install(package):
             else:
                 print("Error! Repository returned code "+ str(zipurl.status_code) +".") # Else, throw a hissy fit about the repository not returning 200
                 sys.exit(0)
-                    
 
         else:
             raise ValueError

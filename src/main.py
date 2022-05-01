@@ -3,12 +3,14 @@
 # Importing modules
 import os
 import sys
-import platform # Basically only for returning the host's arch
+import platform
+from pyziniter import pyzinit # Basically only for returning the host's arch
 
 # Importing other files
 import shell
 import pluginmgr
 import updatemgr
+import pyziniter
 
 homedir = os.path.expanduser('~')
 pyver = sys.version.split(" ")
@@ -16,7 +18,6 @@ pyver = sys.version.split(" ")
 # Putting "everything" together and running.
 def main():
     sys.argv.extend(" ")
-
 
     # Long ass check for if the user wants to run PlugM,
     # and if so, check what PlugM command the user is running.
@@ -50,14 +51,16 @@ def main():
             sys.exit(0)
 
     elif sys.argv[1] == " ":
-        updatemgr.checker.checkForUpdates()
+        if os.path.isdir(pyziniter.PYZFOLDER):
+            updatemgr.checker.checkForUpdates()
+        else:
+            pyziniter.pyzinit.initialize()
         
         if os.path.isfile(os.path.join(homedir, ".pyzrc")):
             if os.path.isfile(updatemgr.VERSIONFILE):
                 print("PyZ - A custom shell in Python, for Python.\nPython ver: "+ pyver[0] +" ("+ platform.architecture()[0] +")")
                 shell.pyzshell.shell()        
             else:
-                updatemgr.verJSONcreate.createVersionJSON()
                 print("PyZ - A custom shell in Python, for Python.\nPython ver: "+ pyver[0] +" ("+ platform.architecture()[0] +")")
                 shell.pyzshell.shell() 
 

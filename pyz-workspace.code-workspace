@@ -43,7 +43,7 @@
 				"type": "python",
 				"request": "launch",
 				"program": "${fileWorkspaceFolder}/src/main.py",
-				"console": "externalTerminal",
+				"console": "integratedTerminal",
 				"justMyCode": true,
 			},
 
