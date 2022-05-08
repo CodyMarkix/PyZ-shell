@@ -1,4 +1,4 @@
-% pyz(1) pyz 0.9.5
+% pyz(1) pyz 1.0.0
 % Markix
 % April 2022
 
