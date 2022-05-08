@@ -2,6 +2,7 @@ import termcolor # Making the prompt pretty :D
 import os
 import shell.pluginimport as pluginimport
 import subprocess
+import sys
 
 # Path for the pyzrc file
 homedir = os.path.expanduser('~')
@@ -81,12 +82,14 @@ def shell():
                 whileLoop()
             elif inputcommand.split(" ")[0] == "if":
                 ifStatement()
+            elif inputcommand == "exit()":
+                sys.exit(0)
             else:
                 exec(inputcommand)
 
         # Ignoring KeyboardInterrupts (Ctrl+C)
         except kbdinterrupt:
-            print("KeyboardInterrupt")
+            print("\nKeyboardInterrupt")
             continue
         
         # Exiting the shell (Ctrl+D)
@@ -94,3 +97,6 @@ def shell():
             print("")
             return
 
+        except Exception as err:
+            print(f'{err.__class__.__name__}: {err}')
+            continue

@@ -38,6 +38,7 @@ Commands:
 - build: Builds the program and nothing else
 - docs: Builds the man pages
 - install: Builds the program and installs it to ~./local/bin
+- uninstall: If you've installed PyZ with ./make install, use this to uninstall it
 - installdeps: Installs dependencies
     - all: Installs all dependencies
     - dev: Installs dependencies only required for development/compiling
@@ -72,7 +73,9 @@ build () {
             ../../src/pluginmgr/updater.py
             ../../src/updatemgr/__init__.py
             ../../src/updatemgr/checker.py
-            ../../src/updatemgr/verJSONcreate.py
+            ../../src/pyziniter/__init__.py
+            ../../src/pyziniter/pyzinit.py
+            ../../src/pyziniter/verJSONcreate.py
         )
 
         pyinstaller --onefile "${pythonfiles[@]}"
@@ -94,11 +97,19 @@ build () {
 
 install () {
     build
-    sudo --prompt="Enter your password to move to write-protected area (/usr/local/bin/):" cp "pyz" "/usr/local/bin/pyz"
-    cd ../../.. || exit 1
+    cp "pyz" "$HOME/.local/bin/pyz"
+    cd ../../ || exit 1
     rm -r bin
 
     printf "[OK] Program installed!\n"
+}
+
+uninstall () {
+    printf "Removing ~/.local/share/pyz..."
+    rm -r "$HOME/.local/share/pyz"
+
+    printf "Removing ~/.local/bin/pyz..."
+    rm -r "$HOME/.local/bin/pyz"
 }
 
 package () {
@@ -206,6 +217,9 @@ main () {
     elif [[ "$1" == "install" ]]; then
         install
     
+    elif [[ "$1" == "uninstall" ]]; then
+        uninstall
+
     elif [[ "$1" == "installdeps" ]]; then
         installdeps "$2"
 

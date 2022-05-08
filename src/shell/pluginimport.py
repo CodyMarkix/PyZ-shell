@@ -16,7 +16,7 @@ def importplugin():
         for plugin in pluginlist:
             if plugin != "repolist.conf" and plugin != "MANIFEST":
                 if i < installedplugs:
-                    importlib.import_module(plugin +".__init__")
+                    importlib.import_module(plugin)
                     i += 1                
                 else:
                     pass

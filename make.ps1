@@ -9,8 +9,29 @@ $helptext = "Help menu for PyZ's make script
 Commands
 - build: Builds the program and nothing else
 - install: Builds the program and installs it to ~./local/bin or %USERPROFILE%\Appdata\PyZ
+- installdeps: Installs dependencies
+    - all: Installs all dependencies
+    - dev: Installs dependencies only required for development/compiling
+    - runtime: Installs dependencies only required for runtime
 - help: Shows this help menu
 "
+
+function installPython() {
+    if ("$(wmic os get osarchitecture)" -like '*64*' ) {
+        Invoke-WebRequest "https://www.python.org/ftp/python/3.10.4/python-3.10.4-amd64.exe" -OutFile "$Env:Temp\pythoninstaller.exe"
+        Invoke-Expression -Command "$Env:Temp\pythoninstaller.exe"
+    } else {
+        Invoke-WebRequest "https://www.python.org/ftp/python/3.10.4/python-3.10.4.exe" -OutFile "$Env:Temp\pythoninstaller.exe"
+        Invoke-Expression -Command "$Env:Temp\pythoninstaller.exe"
+    }
+}
+
+function makeShortcut () {
+    $WshShell = New-Object -comObject WScript.Shell
+    $Shortcut = $WshShell.CreateShortcut($args[0])
+    $Shortcut.TargetPath = $args[1]
+    $Shortcut.Save()
+}
 
 function help () {
     Write-Host "$helptext"
@@ -35,9 +56,34 @@ function install () {
     build
 
     New-Item -Path "$Env:USERPROFILE\AppData\Roaming" -Name "PyZ" -ItemType "directory"
-    Move-Item -Path .\pyz.exe -Destination "$ENV:USERPROFILE\AppData\Roaming\PyZ\pyz.exe"
+    Move-Item -Path .\pyz.exe -Destination "$Env:USERPROFILE\AppData\Roaming\PyZ\pyz.exe"
 
     $Env:PATH += ";$Env:USERPROFILE\AppData\Roaming\PyZ"
+    makeShortcut "$Env:AppData\Microsoft\Windows\Start Menu\Programs\PyZ.lnk" "$Env:USERPROFILE\AppData\Roaming\PyZ\pyz.exe"
+}
+
+function uninstall () {
+    Remove-Item -Path "$Env:AppData\PyZ"
+    Remove-Item -Path "$Env:AppData\Microsoft\Windows\Start Menu\Programs\PyZ.lnk"
+    
+    Write-Host "Uninstalled!"
+    # If anyone knows how to remove a path from PATH, lmk please
+}
+
+function installdeps () {
+    if ($args[0] -eq "all") {
+        installPython
+        pip install termcolor
+        pip install pyinstaller
+
+    } elseif ($args[0] -eq "dev") {
+        installPython
+        pip install pyinstaller
+
+    } elseif ($args[0] -eq "runtime") {
+        installPython
+        pip install termcolor
+    }
 }
 
 if ($args[0] -eq "help") {
@@ -46,6 +92,8 @@ if ($args[0] -eq "help") {
     build
 } elseif ($args[0] -eq "install") {
     install
+} elseif ($args[0] -eq "installdeps") {
+    installdeps $args[1]
 } else {
     help
 }
