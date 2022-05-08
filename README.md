@@ -91,12 +91,10 @@ Which produces:
 
 ## Currently known bugs
 
-No currently known bugs!
-
-<sub>(Not counting make.ps1 not being finished)</sub>
+- Nested multi-line code is not supported
 
 ## To-do list
 
+- [x] Complete make.ps1
 - [x] Fix building from source
 - [x] Fix multi-line code bug
-- [ ] Complete make.ps1
