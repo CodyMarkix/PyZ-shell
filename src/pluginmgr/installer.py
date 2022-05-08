@@ -48,7 +48,7 @@ def install(package):
                 extractzip = ZipFile(zipname)
                 extractzip.extractall(path=manager.PLUGINFOLDER)
 
-                os.remove(manager.PLUGINFOLDER +"/"+ validzip)
+                os.remove(os.path.join(manager.PLUGINFOLDER, validzip))
             else:
                 print("Error! Repository returned code "+ str(zipurl.status_code) +".") # Else, throw a hissy fit about the repository not returning 200
                 sys.exit(0)

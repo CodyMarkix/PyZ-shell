@@ -9,7 +9,6 @@ def createVersionJSON():
         "version": "0.9.5"
     }
 
-    print("A")
     jsoncreating = open(updatemgr.VERSIONFILE, "x")
     jsoncreating.close()
 

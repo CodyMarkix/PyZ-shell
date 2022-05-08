@@ -47,7 +47,7 @@ def main():
             sys.exit(0)
 
         else:
-            pluginmgr.help()
+            pluginmgr.manager.help()
             sys.exit(0)
 
     elif sys.argv[1] == " ":
