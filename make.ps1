@@ -9,11 +9,14 @@ $helptext = "Help menu for PyZ's make script
 Commands
 - build: Builds the program and nothing else
 - install: Builds the program and installs it to %USERPROFILE%\Appdata\PyZ
+- update: Updates the program
+
 - installdeps: Installs dependencies
     - all: Installs all dependencies
     - dev: Installs dependencies only required for development/compiling
     - runtime: Installs dependencies only required for runtime
-- help: Shows this help menu
+
+    - help: Shows this help menu
 "
 
 function installPython() {
@@ -102,6 +105,8 @@ if ($args[0] -eq "help") {
     install
 } elseif ($args[0] -eq "installdeps") {
     installdeps $args[1]
+} elseif ($args[0] -eq "update") {
+    update
 } else {
     help
 }
