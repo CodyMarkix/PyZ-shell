@@ -105,6 +105,8 @@ if ($args[0] -eq "help") {
     install
 } elseif ($args[0] -eq "installdeps") {
     installdeps $args[1]
+} elseif ($args[0] -eq "uninstall") {
+    uninstall
 } elseif ($args[0] -eq "update") {
     update
 } else {
