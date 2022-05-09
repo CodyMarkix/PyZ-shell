@@ -68,7 +68,7 @@ function install () {
 function update () {
     build
     Remove-Item -Path "$Env:AppData\PyZ\pyz.exe"
-    Copy-Item -Path ".\pyz.exe" -Destination "$Env:AppData\PyZ\pyt.exe"
+    Copy-Item -Path ".\pyz.exe" -Destination "$Env:AppData\PyZ\pyz.exe"
 
     Invoke-WebRequest "https://raw.githubusercontent.com/CodyMarkix/PyZ-shell/master/version.json" -OutFile "$Env:AppData\PyZ\version.json"
 }
