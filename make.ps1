@@ -62,6 +62,14 @@ function install () {
     makeShortcut "$Env:AppData\Microsoft\Windows\Start Menu\Programs\PyZ.lnk" "$Env:USERPROFILE\AppData\Roaming\PyZ\pyz.exe"
 }
 
+function update () {
+    build
+    Remove-Item -Path "$Env:AppData\PyZ\pyz.exe"
+    Copy-Item -Path ".\pyz.exe" -Destination "$Env:AppData\PyZ\pyt.exe"
+
+    Invoke-WebRequest "https://raw.githubusercontent.com/CodyMarkix/PyZ-shell/master/version.json" -OutFile "$Env:AppData\PyZ\version.json"
+}
+
 function uninstall () {
     Remove-Item -Path "$Env:AppData\PyZ"
     Remove-Item -Path "$Env:AppData\Microsoft\Windows\Start Menu\Programs\PyZ.lnk"
