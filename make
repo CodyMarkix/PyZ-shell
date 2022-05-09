@@ -37,12 +37,16 @@ make package [DEB/AppImage]
 Commands:
 - build: Builds the program and nothing else
 - docs: Builds the man pages
+
 - install: Builds the program and installs it to ~./local/bin
+- update: Updates the program
 - uninstall: If you've installed PyZ with ./make install, use this to uninstall it
+
 - installdeps: Installs dependencies
     - all: Installs all dependencies
     - dev: Installs dependencies only required for development/compiling
     - runtime: Installs dependencies only required for runtime
+
 - package: Builds the program and creates a package
 - help: Shows this help menu
 
@@ -102,6 +106,14 @@ install () {
     rm -r bin
 
     printf "[OK] Program installed!\n"
+}
+
+update () {
+    build
+    rm "$HOME/.local/bin/pyz"
+    cp "pyz" "$HOME/.local/bin/pyz"
+
+    wget https://raw.githubusercontent.com/CodyMarkix/PyZ-shell/master/version.json -O "$HOME/.local/share/pyz/version.json"
 }
 
 uninstall () {
@@ -216,6 +228,9 @@ main () {
 
     elif [[ "$1" == "install" ]]; then
         install
+
+    elif [[ "$1" == "update" ]]; then
+        update
     
     elif [[ "$1" == "uninstall" ]]; then
         uninstall

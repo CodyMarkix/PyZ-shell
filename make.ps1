@@ -8,7 +8,7 @@ $helptext = "Help menu for PyZ's make script
 
 Commands
 - build: Builds the program and nothing else
-- install: Builds the program and installs it to ~./local/bin or %USERPROFILE%\Appdata\PyZ
+- install: Builds the program and installs it to %USERPROFILE%\Appdata\PyZ
 - installdeps: Installs dependencies
     - all: Installs all dependencies
     - dev: Installs dependencies only required for development/compiling
