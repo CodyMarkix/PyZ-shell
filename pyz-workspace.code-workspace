@@ -61,5 +61,72 @@
 		"editor.tokenColorCustomizations": {
 			"comments": "#427c3d"
 		}
+	},
+	"tasks": {
+		"version": "2.0.0",
+		"tasks": [
+			{
+				"label": "Build PyZ - Binary only",
+				"type": "shell",
+				"group": "build",
+				"windows": {
+					"command": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+					"args": [
+						".\\make.ps1",
+						"build"
+					]
+				},
+				"linux": {
+					"command": "/usr/bin/env",
+					"args": [
+						"bash",
+						"./make",
+						"build"
+					]
+				}
+			},
+			{
+				"label": "Build PyZ - Debian package",
+				"type": "shell",
+				"group": "build",
+				"linux": {
+					"command": "/usr/bin/env",
+					"args": [
+						"bash",
+						"./make",
+						"package",
+						"deb"
+					]
+				},
+				"windows": {
+					"command": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+					"args": [
+						"Write-Host",
+						"[ERROR] You cannot use this task on Windows!"
+					]
+				},
+				"osx": {
+					"command": "zsh",
+					"args": [
+						"-c",
+						"'echo [ERROR] You cannot use this task on macOS!'"
+					]
+				}
+			},
+			{
+				"label": "Build PyZ - AppImage",
+				"type": "shell",
+				"group": "build",
+				"linux": {
+					"command": "/usr/bin/env",
+					"args": [
+						"bash",
+						"./make",
+						"package",
+						"appimage"
+					]
+				}
+			}
+		]
 	}
 }

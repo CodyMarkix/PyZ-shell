@@ -44,8 +44,7 @@ function build () {
     mkdir -p bin\Windows
     Set-Location bin\Windows
 
-    pyinstaller --onefile ..\..\src\main.py ..\..\src\shell\shell.py ..\..\src\shell\rccreator.py ..\..\src\pluginmgr\manager.py ..\..\src\shell\pluginimport.py ..\..\src\pluginmgr\installer.py ..\..\src\pluginmgr\mgrinit.py ..\..\src\pluginmgr\remover.py ..\..\src\pluginmgr\searcher.py ..\..\src\pluginmgr\updater.py
-
+    pyinstaller --onefile ..\..\src\main.py ..\..\src\shell\shell.py ..\..\src\shell\rccreator.py ..\..\src\pluginmgr\manager.py ..\..\src\shell\pluginimport.py ..\..\src\pluginmgr\installer.py ..\..\src\pluginmgr\mgrinit.py ..\..\src\pluginmgr\remover.py ..\..\src\pluginmgr\searcher.py ..\..\src\pluginmgr\updater.py ..\..\src\pyziniter\__init__.py ..\..\src\pyziniter\pyzinit.py ..\..\src\pyziniter\verJSONcreate.py
     Set-Location -Path dist
     Rename-Item -Path main.exe pyz.exe
     Move-Item -Path .\pyz.exe -Destination ..\pyz.exe
@@ -61,6 +60,7 @@ function install () {
     New-Item -Path "$Env:USERPROFILE\AppData\Roaming" -Name "PyZ" -ItemType "directory"
     Move-Item -Path .\pyz.exe -Destination "$Env:USERPROFILE\AppData\Roaming\PyZ\pyz.exe"
 
+    Copy-File -Path ..\..\version.json -Destination "$Env:USERPROFILE\AppData\Roaming\PyZ\version.json"
     $Env:PATH += ";$Env:USERPROFILE\AppData\Roaming\PyZ"
     makeShortcut "$Env:AppData\Microsoft\Windows\Start Menu\Programs\PyZ.lnk" "$Env:USERPROFILE\AppData\Roaming\PyZ\pyz.exe"
 }

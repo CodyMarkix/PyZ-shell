@@ -56,12 +56,18 @@ def ifStatement():
             exec(inputcommand + " " + "; ".join(ifcode2))
             return
 
+# def getPath():
+#     global currpath
+
+#     if currentpath
+
 # The function for running the shell
 def shell():
     subprocess.call('', shell=True) # This is to make sure, the prompt isn't r/software gore material
 
     # Execute the .pyzrc file
     if os.path.isfile(os.path.join(homedir, '.pyzrc')):
+        getShortPath()
         rcfile = open(rcfilepath, "r")
         for x in rcfile:
             exec(x)
@@ -72,6 +78,15 @@ def shell():
     # The actual shell
     while True:
         try:
+            if os.getcwd() != "/":
+                if os.path.expanduser('~') in os.getcwd():
+                    getShortPath()
+                else:
+                    newarr = os.getcwd()
+            else:
+                newarr = os.getcwd()
+
+            
             global inputcommand
             inputcommand = input(prompt +" ")
 

@@ -142,6 +142,7 @@ package () {
         rm -r "${versionstring}"
         mv "${versionstring}.deb" Linux/
         cd Linux/ || exit 1
+        rm pyz
     
     elif [[ "$1" == "AppImage" ]] || [[ "$1" == "Appimage" ]] || [[ "$1" == "appImage" ]] || [[ "$1" == "appimage" ]] || [[ "$1" == "APPIMAGE" ]]; then
         build
@@ -162,8 +163,17 @@ package () {
 
         cd ../Linux || exit 1
         cp "pyz" "../${versionstring}.AppDir/usr/local/bin/pyz"
+        cd .. || exit 1
+
+        read -p "Enter your architecture (x86_64, i386, armhf, aarch64): " appimagearch
+        read -p "Enter the path to AppImageTool: " aitpath
         
-        printf "\nUnfortunately for now, you have to run AppImageTool yourself.\nCopy the path to the %s.AppDir folder and run: ARCH=x86_64 /path/to/AppImageTool /path/to/AppDir/folder\n" "${versionstring}"
+        ARCH=${appimagearch}
+        ${aitpath} "${versionstring}.AppDir"
+
+        mv "PyZ-${ARCH}.AppImage" "Linux/"
+        rm -r "${versionstring}.AppDir"
+        rm Linux/pyz
 
     else
         printf "[ERROR] Please specify what kind of package you want to create!\n"

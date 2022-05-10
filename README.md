@@ -6,8 +6,6 @@
 
 PyZ is meant to be a custom shell for python. Contains a customizable shell, a .rc file and perhaps more coming soon! The shell's main inspiration is zsh, an alternative shell to bash. Except instead of being an entire different programming language, it's an alternative shell!
 
-<h2> HEADS UP: This thing is still in beta!! </h2>
-
 - [PyZ - A custom shell for Python, written in Python](#pyz---a-custom-shell-for-python-written-in-python)
   - [Platform support](#platform-support)
   - [Installation with pre-built binary](#installation-with-pre-built-binary)
