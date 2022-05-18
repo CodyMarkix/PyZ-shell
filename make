@@ -4,9 +4,9 @@
 # This is not a real make file, but rather
 # a build/install script written in bash
 
-versionstring="pyz_1.0.0_amd64"
+versionstring="pyz_1.2.0_amd64"
 debcontrol="Package: pyz
-Version: 1.0.0
+Version: 1.2.0
 Architecture: amd64
 Essential: no
 Priority: optional
