@@ -3,17 +3,20 @@
 # Importing modules
 import os
 import sys
-import platform
-from pyziniter import pyzinit # Basically only for returning the host's arch
+import platform # Basically only for returning the host's arch
+import threading
 
 # Importing other files
 import shell
 import pluginmgr
 import updatemgr
 import pyziniter
+import api
 
 homedir = os.path.expanduser('~')
 pyver = sys.version.split(" ")
+
+apithread = threading.Thread(target=api.connection.start, daemon=True)
 
 # Putting "everything" together and running.
 def main():
@@ -51,6 +54,7 @@ def main():
             sys.exit(0)
 
     elif sys.argv[1] == " ":
+        apithread.start()
         if os.path.isdir(pyziniter.PYZFOLDER):
             updatemgr.checker.checkForUpdates()
         else:
@@ -72,4 +76,5 @@ def main():
 
     return 0
 
-main()
+pyzthread = threading.Thread(target=main)
+pyzthread.start()

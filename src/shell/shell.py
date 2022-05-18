@@ -1,6 +1,7 @@
 import termcolor # Making the prompt pretty :D
 import os
 import shell.pluginimport as pluginimport
+import api
 import subprocess
 import sys
 
@@ -9,6 +10,7 @@ homedir = os.path.expanduser('~')
 rcfilepath = homedir +"/.pyzrc"
 
 prompt = "fallback prompt >" # Fallback prompt, in case there is no prompt in the .pyzrc file
+inputcommand = None
 
 # Aliases for errors
 eoferr = EOFError
@@ -56,10 +58,6 @@ def ifStatement():
             exec(inputcommand + " " + "; ".join(ifcode2))
             return
 
-# def getPath():
-#     global currpath
-
-#     if currentpath
 
 # The function for running the shell
 def shell():
@@ -67,7 +65,7 @@ def shell():
 
     # Execute the .pyzrc file
     if os.path.isfile(os.path.join(homedir, '.pyzrc')):
-        getShortPath()
+        # getShortPath()
         rcfile = open(rcfilepath, "r")
         for x in rcfile:
             exec(x)
@@ -78,17 +76,7 @@ def shell():
     # The actual shell
     while True:
         try:
-            if os.getcwd() != "/":
-                if os.path.expanduser('~') in os.getcwd():
-                    getShortPath()
-                else:
-                    newarr = os.getcwd()
-            else:
-                newarr = os.getcwd()
-
-            
-            global inputcommand
-            inputcommand = input(prompt +" ")
+            inputcommand = input(f"{prompt} ")
 
             # Handling multiple-line things like loops and if statements
             if inputcommand.split(" ")[0] == "for":
@@ -98,6 +86,7 @@ def shell():
             elif inputcommand.split(" ")[0] == "if":
                 ifStatement()
             elif inputcommand == "exit()":
+                api.connection.stop()
                 sys.exit(0)
             else:
                 exec(inputcommand)
@@ -109,6 +98,7 @@ def shell():
         
         # Exiting the shell (Ctrl+D)
         except eoferr:
+            api.connection.stop()
             print("")
             return
 

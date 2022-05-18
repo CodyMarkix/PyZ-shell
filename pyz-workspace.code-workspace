@@ -1,22 +1,26 @@
 {
 	"folders": [
+		/*
+		You might want to edit these paths, depending on what you have and what you don't
+		For some dumb-ass reason, VS Code workspaces only support paths relative to the workspace file. (Either that, or I can't set it up properly)
+		*/
 		{
 			"path": ".",
-			"name": "PyZ Shell"
+			"name": "PyZ Shell" // The actuall program
 		},
 		{
 			"path": "../pyz-plugm-repo",
-			"name": "Main repo"
+			"name": "Main repo" // The plugin repository
 		},
 		{
 			"path": "../pyz-repo-template",
-			"name": "Repo Template"
+			"name": "Repo Template" // Repo template
 		},
 		{
-			/*
-			You might want to edit paths for Plugins (*nix) and Plugins (Windows), depending on where you placed the workspace file.
-			For some dumb-ass reason, VS Code workspaces only support paths relative to the workspace file. (Either that, or I can't set it up properly)
-			*/
+			"path": "../pyz-extensions",
+			"name": "Plugins (dev)" // Not available anywhere, it's just a folder where I have plugins that are W.I.P
+		},
+		{
 			"path": "../../../.local/share/pyz/plugins",
 			"name": "Plugins (*nix)"
 		},

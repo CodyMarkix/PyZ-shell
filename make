@@ -80,6 +80,10 @@ build () {
             ../../src/pyziniter/__init__.py
             ../../src/pyziniter/pyzinit.py
             ../../src/pyziniter/verJSONcreate.py
+            ../../src/api/__init__.py
+            ../../src/api/connection.py
+            ../../src/api/pyzprompt.py
+            ../../src/api/pyzshell.py
         )
 
         pyinstaller --onefile "${pythonfiles[@]}"
@@ -215,6 +219,7 @@ installdeps () {
         sudo apt install python3-pip pandoc || sudo pacman -S python-pip pandoc || sudo dnf install python3-pip pandoc
         pip install termcolor
         pip install pyinstaller
+        pip install pynput
     
     elif [[ "$1" == "dev" ]]; then
         sudo apt install python3-pip pandoc || sudo pacman -S python-pip pandoc || sudo dnf install python3-pip pandoc
@@ -223,6 +228,7 @@ installdeps () {
     elif [[ "$1" == "runtime" ]]; then
         sudo apt install python3-pip || sudo pacman -S python-pip || sudo dnf install python3-pip
         pip install termcolor
+        pip install pynput
     fi
 }
 

@@ -44,7 +44,7 @@ function build () {
     mkdir -p bin\Windows
     Set-Location bin\Windows
 
-    pyinstaller --onefile ..\..\src\main.py ..\..\src\shell\shell.py ..\..\src\shell\rccreator.py ..\..\src\pluginmgr\manager.py ..\..\src\shell\pluginimport.py ..\..\src\pluginmgr\installer.py ..\..\src\pluginmgr\mgrinit.py ..\..\src\pluginmgr\remover.py ..\..\src\pluginmgr\searcher.py ..\..\src\pluginmgr\updater.py ..\..\src\pyziniter\__init__.py ..\..\src\pyziniter\pyzinit.py ..\..\src\pyziniter\verJSONcreate.py
+    pyinstaller --onefile ..\..\src\main.py ..\..\src\shell\shell.py ..\..\src\shell\rccreator.py ..\..\src\pluginmgr\manager.py ..\..\src\shell\pluginimport.py ..\..\src\pluginmgr\installer.py ..\..\src\pluginmgr\mgrinit.py ..\..\src\pluginmgr\remover.py ..\..\src\pluginmgr\searcher.py ..\..\src\pluginmgr\updater.py ..\..\src\pyziniter\__init__.py ..\..\src\pyziniter\pyzinit.py ..\..\src\pyziniter\verJSONcreate.py ..\..\src\api\__init__.py ..\..\src\api\pyzprompt.py ..\..\src\api\pyzshell.py
     Set-Location -Path dist
     Rename-Item -Path main.exe pyz.exe
     Move-Item -Path .\pyz.exe -Destination ..\pyz.exe
@@ -94,6 +94,7 @@ function installdeps () {
     } elseif ($args[0] -eq "runtime") {
         installPython
         pip install termcolor
+        pip install pynput
     }
 }
 
