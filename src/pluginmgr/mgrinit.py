@@ -17,6 +17,10 @@ def init():
     localmanifest = open(os.path.join(manager.PLUGINFOLDER, "MANIFEST", "mainrepo.json"), 'x')
     localmanifest.close()
 
+    print("Creating installedpkg.json")
+    installedpkg = open(os.path.join(manager.PLUGINFOLDER, "installedpkg.json"), 'x')
+    installedpkg.close()
+
     repolistfile = open(os.path.join(manager.PLUGINFOLDER, "repolist.conf"), "a+")
     if os.name in "nt":
         repolistpath = os.path.join(manager.HOMEFOLDER, "AppData", "PyZ", "plugins", "repolist.json")        

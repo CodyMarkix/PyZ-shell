@@ -5,4 +5,5 @@ def chPrompt(newprompt):
     return None
 
 def getPrompt():
-    return shell.prompt
+    curprompt = shell.prompt
+    print(curprompt)
