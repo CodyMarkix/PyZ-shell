@@ -10,68 +10,40 @@ homedir = os.path.expanduser('~')
 rcfilepath = homedir +"/.pyzrc"
 
 prompt = "fallback prompt >" # Fallback prompt, in case there is no prompt in the .pyzrc file
-inputcommand = None
+
 
 # Aliases for errors
 eoferr = EOFError
 kbdinterrupt = KeyboardInterrupt
 
-def forLoop():
-    forloop2 = []
+def multipleLineCode(cmd: str):
+    secondPartArr = []
 
-    while True:
-        forcode = input("... ")
-        
-        if forcode != "":
-            forloop2.append(forcode)
-        
-        elif forcode == "":
-            # codenovar = forloop.pop()
-            # testvar = '; '.join(forloop)
-            samplevar = inputcommand + " " + "; ".join(forloop2)
-            exec(inputcommand + " " + "; ".join(forloop2))
-            return
-
-def whileLoop():
-    whileloop2 = []
-
-    while True:
-        whilecode = input("... ")
-        
-        if whilecode != "":
-            whileloop2.append(whilecode)
-        
-        elif whilecode == "":
-            exec(inputcommand + " " + "; ".join(whileloop2))
-            return
-
-def ifStatement():
-    ifcode2 = []
-
-    while True:
-        ifcode = input("... ")
-        
-        if ifcode != "":
-            ifcode2.append(ifcode)
-        
-        elif ifcode == "":
-            exec(inputcommand + " " + "; ".join(ifcode2))
-            return
-
+    if (cmd[-1] == ":"):
+        while True:
+            secondPart = input("... ")
+            if secondPart != "":
+                secondPartArr.append(secondPart)
+            
+            elif secondPart == "":
+                exec(cmd + " " + "; ".join(secondPartArr))
+                return
+    else:
+        exec(cmd)
+        return
 
 # The function for running the shell
 def shell():
     subprocess.call('', shell=True) # This is to make sure, the prompt isn't r/software gore material
 
-    # Execute the .pyzrc file
-    if os.path.isfile(os.path.join(homedir, '.pyzrc')):
-        # getShortPath()
-        rcfile = open(rcfilepath, "r")
-        for x in rcfile:
-            exec(x)
-
     # Import PyZ extensions
     pluginimport.importplugin()
+
+    # Execute the .pyzrc file
+    if os.path.isfile(os.path.join(homedir, '.pyzrc')):
+        with open(os.path.join(homedir, ".pyzrc")) as rcfile:
+            for x in rcfile.readlines():
+                exec(x)
 
     # The actual shell
     while True:
@@ -79,12 +51,8 @@ def shell():
             inputcommand = input(f"{prompt} ")
 
             # Handling multiple-line things like loops and if statements
-            if inputcommand.split(" ")[0] == "for":
-                forLoop()
-            elif inputcommand.split(" ")[0] == "while":
-                whileLoop()
-            elif inputcommand.split(" ")[0] == "if":
-                ifStatement()
+            if inputcommand.split(" ")[0] in ["for", "while", "if"]:
+                multipleLineCode(inputcommand)
             elif inputcommand == "exit()":
                 api.connection.stop()
                 sys.exit(0)

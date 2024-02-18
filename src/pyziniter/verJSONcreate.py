@@ -9,6 +9,9 @@ def createVersionJSON():
         "version": "1.0.0"
     }
 
+    if (not os.path.isdir(updatemgr.VERSIONFILE[:-12])):
+        os.mkdir(updatemgr.VERSIONFILE[:-12])
+
     jsoncreating = open(updatemgr.VERSIONFILE, "x")
     jsoncreating.close()
 
