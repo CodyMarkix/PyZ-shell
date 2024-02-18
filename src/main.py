@@ -55,7 +55,7 @@ def main():
         
     elif sys.argv[1] == " ":
         apithread.start()
-        if os.path.isdir(pyziniter.PYZFOLDER):
+        if os.path.isdir(pyziniter.PYZFOLDER) and os.path.isfile(os.path.join(homedir, ".pyzrc")):
             updatemgr.checker.checkForUpdates()
         else:
             pyziniter.pyzinit.initialize()
